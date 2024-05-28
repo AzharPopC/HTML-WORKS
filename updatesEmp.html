@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Joining Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header, footer {
+            width: 100%;
+            padding: 10px;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 30px;
+        }
+        header img {
+            max-width: 150px;
+            position: absolute;
+            left: 10px;
+        }
+        header h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: rgb(56,108,119);
+            color: white;
+        }
+        h1 {
+            color: rgba(15,68,93,255);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        input[type="text"], input[type="email"], input[type="date"], input[type="file"], select {
+            width: 95%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .nav-buttons {
+            text-align: center;
+        }
+        .nav-buttons input[type="button"] {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        footer p {
+            text-align: center;
+            margin: 10px 0;
+        }
+        .hidden {
+            display: none;
+        }
+        #bt {
+            background-color: rgb(56,108,119);
+            color: white;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .required-field::after {
+            content: '*';
+            color: red;
+            margin-left: 3px;
+        }
+        .table-fixed {
+            width: 100%;
+        }
+        .table-fixed td, .table-fixed th {
+            width: 50%;
+        }
+		  .line-input {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .line-input:focus {
+        outline: none;
+    }
+    </style>
+<body>
+    <header>
+        <img src="https://img1.wsimg.com/isteam/ip/d992b217-5a8f-40b2-969b-71f6df8f1102/blob-299e023.png/:/rs=w:455,h:198,cg=true,m/cr=w:455,h:198/qt=q:100/ll" alt="Company Logo">
+        <h1>EMPLOYEE JOINING FORM</h1>
+    </header>
+
+    <form id="joiningForm" action="/submit-form" method="post" enctype="multipart/form-data" onsubmit="return validateAllPages();">
+        
+    <!-- Page 1 -->
+    <div class="page" id="page1">
+        <table class="table-fixed">
+        <tr>
+            <th colspan="2"><h2>Personal Details</h2></th>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" id="name" name="name" class="required-field" ></td>
+        </tr>
+        <tr>
+            <td>Photo:</td>
+            <td><input type="file" id="photo" name="photo" class="required-field"></td>
+        </tr>
+        <tr>
+    <td>Gender:</td>
+    <td>
+        <select id="gender" name="gender" class="required-field" >
+            <option value="" disabled selected>Select your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="others">Others</option>
+            <option value="prefer_not_to_say">Prefer not to say</option>
+        </select>
+    </td>
+</tr>
+
+        <tr>
+            <td>Permanent Address:</td>
+            <td><input type="text" id="permanentAddress" name="permanentAddress" class="required-field"  ></td>
+        </tr>
+        <tr>
+            <td>Present/Communication Address:</td>
+            <td><input type="text" id="presentAddress" name="presentAddress" class="required-field"></td>
+        </tr>
+        <tr>
+            <td>Mobile No:</td>
+            <td><input type="text" id="mobile" name="mobile"  inputmode="numeric" pattern="[0-9]{10}" class="required-field"></td>
+        </tr>
+        <tr>
+            <td>Emergency Contact Person Name & No:</td>
+            <td><input type="text" id="emergencyContact" name="emergencyContact" class="required-field" ></td>
+        </tr>
+        <tr>
+            <td>Email Id:</td>
+            <td><input type="email" id="email" name="email" class="required-field" ></td>
+        </tr>
+        <tr>
+            <td>Date Of Birth (dd/mm/yyyy):</td>
+            <td><input type="date" id="dob" name="dob" class="required-field" ></td>
+        </tr>
+        <tr>
+            <td>Blood Group:</td>
+            <td><input type="text" id="bloodGroup" name="bloodGroup" class="required-field"></td>
+        </tr>
+        <tr>
+            <td>Nationality:</td>
+            <td><input type="text" id="nationality" name="nationality"  class="required-field"></td>
+        </tr>
+        <tr>
+            <td>Marital Status & Date of Marriage (if married):</td>
+            <td><input type="text" id="maritalStatus" name="maritalStatus" class="required-field"></td>
+        </tr>
+        <tr>
+            <td>Language Known (Start with Mother Tongue):</td>
+            <td><input type="text" id="languages" name="languages" ></td>
+        </tr>
+        <tr>
+            <td>Voter ID Number:</td>
+            <td><input type="text" id="voterId" name="voterId" ></td>
+        </tr>
+        <tr>
+            <td>PAN Number:</td>
+            <td><input type="text" id="panNumber" name="panNumber" class="required-field" ></td>
+        </tr>
+        <tr>
+    <td>Aadhaar Card Number:</td>
+    <td>
+        <input type="text" id="aadhaarNumber" name="aadhaarNumber " inputmode="numeric"  class="required-field" >
+    </td>
+</tr>
+
+        <tr>
+            <td>Physical Identification:</td>
+            <td><input type="text" id="physicalId" name="physicalId"></td>
+        </tr>
+    </table>
+
+    <table class="table-fixed">
+        <tr>
+            <th colspan="2"><h2>Bank Account Details</h2></th>
+        </tr>
+        <tr>
+            <td>Full Name:</td>
+            <td><input type="text" id="bankFullName" name="bankFullName" class="required-field" ></td>
+        </tr>
+        <tr>
+            <td>Account Number:</td>
+            <td><input type="text" id="accountNumber" name="accountNumber" inputmode="numeric" class="required-field"></td>
+        </tr>
+        <tr>
+            <td>IFSC Code:</td>
+            <td><input type="text" id="ifscCode" name="ifscCode" class="required-field"></td>
+        </tr>
+        <tr>
+            <td>Bank Name-Branch:</td>
+            <td><input type="text" id="bankNameBranch" name="bankNameBranch" class="required-field" ></td>
+        </tr>
+    </table>
+
+    <table class="table-fixed">
+        <tr>
+            <th colspan="2"><h2>Education Qualification</h2></th>
+        </tr>
+        <tr>
+            <td>Course / Degree Name:</td>
+            <td><input type="text" id="courseDegreeName1" name="courseDegreeName1" class="required-field"></td>
+        </tr>
+        <tr>
+            <td>Name & City of School/College/Institute:</td>
+            <td><input type="text" id="schoolCollegeName1" name="schoolCollegeName1" class="required-field"></td>
+        </tr>
+        <tr>
+            <td>Board/University affiliated to:</td>
+            <td><input type="text" id="university1" name="university1" class="required-field"></td>
+        </tr>
+        <tr>
+            <td>Year From (mm/yyyy) To (mm/yyyy):</td>
+            <td >
+            <input type="month" id="startDate" name="startDate" >
+            to
+            <input type="month" id="endDate" name="endDate" >
+        </td>
+        </tr>
+        <tr>
+            <td>Grade/% Obtained:</td>
+            <td><input type="text" id="grade1" name="grade1" class="required-field"></td>
+        </tr>
+    </table >
+
+    <table class="table-fixed">
+        <tr>
+            <th colspan="2"><h2>Family Details</h2></th>
+        </tr>
+        <tr>
+            <td>Family Member:</td>
+            <td><input type="text" id="familyMember1" name="familyMember1"></td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td><input type="text" id="age1" name="age1"></td>
+        </tr>
+        <tr>
+            <td>Relationship:</td>
+            <td><input type="text" id="relationship1" name="relationship1"></td>
+        </tr>
+        <tr>
+            <td>Occupation:</td>
+            <td><input type="text" id="occupation1" name="occupation1"></td>
+        </tr>
+    </table>
+
+    <div class="nav-buttons">
+        <input type="button" value="Next" onclick="validateCurrentPageAndShowNext(2)">
+    </div>
+</div>
+
+<!-- Page 2 -->
+<div class="page hidden" id="page2">
+       <table class="table-fixed">
+        <tr>
+            <th colspan="2"><h2>Employment Records</h2></th>
+        </tr>
+        <tr>
+            <td>Total Work Experience (Months):</td>
+            <td><input type="text" id="workExperience1" name="workExperience1" class="required-field" ></td>
+        </tr>
+        <tr>
+            <td>Name of Employer (Current Job):</td>
+            <td><input type="text" id="employerName1" name="employerName1" class="required-field"></td>
+        </tr>
+        <tr>
+            <td>Employee Number/Code:</td>
+            <td><input type="text" id="employeeNumber1" name="employeeNumber1" ></td>
+        </tr>
+        <tr>
+            <td>Department:</td>
+            <td><input type="text" id="department1" name="department1"></td>
+        </tr>
+        <tr>
+            <td>Designation:</td>
+            <td><input type="text" id="designation1" name="designation1"></td>
+        </tr>
+        <tr>
+            <td>Nature Of Employment:</td>
+            <td><input type="text" id="employmentNature1" name="employmentNature1"></td>
+        </tr>
+        <tr>
+            <td>Time Period (mm/yyyy):</td>
+            <td><input type="text" id="employmentPeriod1" name="employmentPeriod1"></td>
+        </tr>
+        <tr>
+            <td>Location:</td>
+            <td><input type="text" id="location1" name="location1"></td>
+        </tr>
+        <tr>
+            <td>Reason For Leaving:</td>
+            <td><input type="text" id="leavingReason1" name="leavingReason1"></td>
+        </tr>
+        <tr>
+            <td>Reference Name:</td>
+            <td><input type="text" id="referenceName1" name="referenceName1"></td>
+        </tr>
+        <tr>
+            <td>Reference Contact Number:</td>
+            <td><input type="text" id="referenceContact1" name="referenceContact1"></td>
+        </tr>
+        <tr>
+            <td>Reference Email:</td>
+            <td><input type="email" id="referenceEmail1" name="referenceEmail1"></td>
+        </tr>
+        <tr>
+            <td>Reference Designation:</td>
+            <td><input type="text" id="referenceDesignation1" name="referenceDesignation1"></td>
+        </tr>
+        <tr>
+            <td>Reference Relationship:</td>
+            <td><input type="text" id="referenceRelationship1" name="referenceRelationship1"></td>
+        </tr>
+        <tr>
+            <td>Corporate Office:</td>
+            <td><input type="text" id="corporateOffice1" name="corporateOffice1"></td>
+        </tr>
+    </table>
+
+    <table class="table-fixed">
+        <tr>
+            <th colspan="2"><h2>Salary & Benefits Details (Current/Last Job)</h2></th>
+        </tr>
+        <tr>
+            <td>Basic Amount Per month:</td>
+            <td><input type="text" id="basicPerMonth" name="basicPerMonth"></td>
+        </tr>
+        <tr>
+            <td>Basic Amount Per annum:</td>
+            <td><input type="text" id="basicPerAnnum" name="basicPerAnnum"></td>
+        </tr>
+        <tr>
+            <td>D.A. Amount Per month:</td>
+            <td><input type="text" id="daPerMonth" name="daPerMonth"></td>
+        </tr>
+        <tr>
+            <td>D.A. Amount Per annum:</td>
+            <td><input type="text" id="daPerAnnum" name="daPerAnnum"></td>
+        </tr>
+    </table>
+
+      <table>
+            <th colspan="2"><h2>Other Details</h2></th>
+        </table>
+       
+            <p>Do you have a valid permanent driving license:</p>
+            <p><input type="text" id="drivingLicense" name="drivingLicense" class="required-field line-input"></p>
+       
+        
+            <p>Do you possess a two / Four Wheeler:</p>
+            <p><input type="text" id="vehicleOwnership" name="vehicleOwnership" class="required-field line-input" ></p>
+       
+        
+            <p>Do you have a valid Passport:</p>
+            <p><input type="text" id="passport" name="passport" class="required-field line-input"></p>
+        
+
+
+ 
+        <table>
+            <th colspan="2"><h2>Medical History</h2></th>
+        </table>
+        
+            <p>Indicate whether you have any physical disability:</p>
+            <p><input type="text" id="physicalDisability" name="physicalDisability" class="required-field line-input"></p>
+        
+        
+            <p>Have you had any major illness in the past:</p>
+            <p><input type="text" id="majorIllness" name="majorIllness" class="required-field line-input"></p>
+        
+    
+
+		<table>
+            <th colspan="2"><h2>Other Information</h2></th>
+        </table>
+            <p>Have you ever been charged or convicted for any criminal offense? if yes give details:</p>
+            <p><input type="text" id="criminalOffenses" name="criminalOffenses" class="required-field line-input"><p>
+        
+        
+            <p>Have your services ever been terminated by your employer? If yes give details:</p>
+            <p><input type="text" id="termination" name="termination" class="required-field line-input" ></p>
+        
+    
+
+    
+
+        <table class="table-fixed">
+            <tr>
+                <th colspan="2"><h2>Authorization / Declaration</h2></th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>
+                        I hereby authorize the Company and its representative(s) to authenticate the information provided in my resume and application for employment and to conduct enquiries as may be necessary at the company’s discretion. I authorize all persons who may have information relevant to this enquiry to disclose it to the Company or its representative(s). I release all persons from any liability whatsoever on account of such disclosure.
+                    </p>
+                    <p>
+                        I hereby declare that there are no cases pending against me (Civil / criminal) and also that to the best of my knowledge no police case has been registered in my name. I also declare that I shall follow all security & safety guidelines including wearing helmet seat belts safety harness etc at all times while on duty.
+                    </p>
+                    <p>
+                        I also declare that all the information provided by me in my resume and application for employment to Company and its representative(s) is authentic & comprehensive and I understand that it is taken into account by Company in making an appointment. I understand that I am liable for all inaccuracies omissions or misleading information (if any) including suppression or information not supported by the evidence in my application form which may subsequently render my contract of employment null and void and my employment shall come to an end with immediate effect from the time these come to light without any notice or payment in lieu thereof.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Signature:</td>
+                <td><input type="file" id="signature" name="signature" class="required-field" ></td>
+            </tr>
+        </table>
+
+      <div class="nav-buttons">
+    <input type="button" value="Previous" onclick="navigatePrevious()">
+    <input id="bt" type="submit" value="Submit">
+</div>
+
+    </div>
+</form>
+
+<footer>
+    <p>&copy; 2023 Your Company. All rights reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        addRequiredAsterisks();
+    });
+
+    function addRequiredAsterisks() {
+        var requiredFields = document.querySelectorAll('.required-field');
+        requiredFields.forEach(function(field) {
+            if (!field.classList.contains('has-asterisk')) {
+                var label = field.closest('td').previousElementSibling;
+                if (label) {
+                    label.innerHTML += ' <span style="color: red;">*</span>';
+                    field.classList.add('has-asterisk');
+                }
+            }
+        });
+    }
+
+    function showPage(pageNumber) {
+        var pages = document.getElementsByClassName('page');
+        for (var i = 0; i < pages.length; i++) {
+            pages[i].classList.add('hidden');
+        }
+        document.getElementById('page' + pageNumber).classList.remove('hidden');
+    }
+
+    function validateCurrentPageAndShowNext(pageNumber) {
+        var currentPage = document.querySelector('.page:not(.hidden)');
+        var requiredFields = currentPage.querySelectorAll('.required-field');
+
+        var isValid = true;
+        requiredFields.forEach(function(field) {
+            if (!validateField(field)) {
+                isValid = false;
+                field.style.border = '2px solid red';
+            } else {
+                field.style.border = '';
+            }
+        });
+
+        if (isValid) {
+            showPage(pageNumber);
+        } else {
+            alert('Please fill all required fields on this page correctly.');
+        }
+    }
+
+    function validateAllPages() {
+        var isValid = true;
+        var requiredFields = document.querySelectorAll('.required-field');
+
+        requiredFields.forEach(function(field) {
+            if (!validateField(field)) {
+                isValid = false;
+                field.style.border = '2px solid red';
+            } else {
+                field.style.border = '';
+            }
+        });
+
+        if (!isValid) {
+            alert('Please fill all required fields correctly.');
+            return false;
+        } else {
+            alert('Your response has been successfully submitted.');
+            return true;
+        }
+    }
+
+    function validateField(field) {
+        var value = field.value.trim();
+        var fieldId = field.getAttribute('id');
+
+        if (value === '') {
+            return false;
+        }
+
+        if (fieldId === 'email') {
+            return /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(value);
+        }
+
+        if (fieldId === 'mobile') {
+            return /^[0-9]{10}$/.test(value);
+        }
+
+        if (fieldId === 'accountNumber') {
+            return /^[0-9]+$/.test(value);
+        }
+
+        if (fieldId === 'aadhaarNumber') {
+            return /^[0-9]{12}$/.test(value);
+        }
+
+        return true;
+    }
+
+    function navigatePrevious() {
+        showPage(1);
+    }
+</script>
+
+
+
+</body>
+</html>
+
